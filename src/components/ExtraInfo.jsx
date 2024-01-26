@@ -7,8 +7,8 @@ export const ExtraInfo = ({product}) => {
           <button className="border w-full py-3 bg-blue-400 text-white">
             Produktinfo
           </button>
-          <button className="border w-full py-3">Specifikationer</button>
-          <button className="border w-full py-3">Produktrecensioner</button>
+          <button className="border hover:bg-blue-300 w-full py-3">Specifikationer</button>
+          <button className="border hover:bg-blue-300 w-full py-3">Produktrecensioner</button>
         </div>
         <p className="p-4 font-serif text-white">{product?.description}</p>
       </div>
