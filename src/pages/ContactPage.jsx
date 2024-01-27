@@ -1,5 +1,5 @@
 import React from 'react'
-import { From } from '../components/From'
+import { Form } from '../components/Form'
 
 function ContactPage() {
   return (
@@ -9,7 +9,7 @@ function ContactPage() {
         <h1>Kontakta Oss</h1>
       </div>
       <div className='p-4 w-[450px] flex items-center bg-slate-100 rounded-r-lg'>
-        <From />
+        <Form />
         </div>
     </div>
     </div>

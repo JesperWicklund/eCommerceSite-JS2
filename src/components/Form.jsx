@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const From = () => {
+export const Form = () => {
   return (
     <form className='w-full'>
       <div className='mb-4'>
