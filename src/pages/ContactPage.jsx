@@ -1,19 +1,22 @@
-import React from 'react'
-import { Form } from '../components/Form'
+import React from "react";
+import { ContactForm } from "../components/ContactForm";
 
 function ContactPage() {
   return (
-    <div className="bg-gradient-to-t from-slate-900 to-slate-600">
-      <div className='h-svh grid grid-cols-[1fr,auto] py-28 px-8 '>
-      <div className='left bg-cyan-900 text-white text-4xl font-bold rounded-l-lg max-md:hidden'>
-        <h1 className='mt-[16rem] text-center'>Kontakta Oss</h1>
+    <div
+      className=" flex justify-center mx-auto mt-10 px-5 bg-red-500 w-[90%] rounded-md"
+      style={{
+        backgroundImage:
+          'url("https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div>
+        <ContactForm />
       </div>
-      <div className=' max-md:rounded-lg max-md:w-full p-4 w-[450px] flex items-center bg-slate-100 rounded-r-lg '>
-        <Form />
-        </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default ContactPage
+export default ContactPage;

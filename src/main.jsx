@@ -1,27 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
-import HomePage from "./pages/HomePage"
-import ProductPage from "./pages/ProductPage"
-import DetailPage from "./pages/DetailPage"
+import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
+import DetailPage from './pages/DetailPage'
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
-      <Route index element={<HomePage />}/>
-      <Route path='/products' element={<ProductPage />}/>
-      <Route path='/details/:id' element={<DetailPage />} />
-      <Route path='/contact' element={<ContactPage />} />
 
-    </Route>
-  )
-)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />, 
+    children: [
+      {index: true, element: <HomePage />},
+      {path: "/contact", element: <ContactPage />},
+      {path: "/details/:productId", element: <DetailPage /> }
+
+    ]
+  }
+  
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
 )

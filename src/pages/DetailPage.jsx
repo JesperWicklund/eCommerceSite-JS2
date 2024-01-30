@@ -1,35 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { ProductDetailInfo } from "../components/ProductDetailInfo";
-import { ProductDetailImages } from "../components/ProductDetailImages";
-import { useParams } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+
 import axios from "axios";
-import { ExtraInfo } from "../components/ExtraInfo";
+import { useParams } from "react-router-dom";
+import { DetailPageImages } from "../components/DetailPageImages";
+import { DetailPageInfo } from "../components/DetailPageInfo";
 
 function DetailPage() {
-  const [product, setProduct] = useState(null);
-  const { id } = useParams();
 
-  useEffect(() => {
-    const getProducts = async () => {
-      const res = await axios.get(
-        `https://js2-ecommerce-api.vercel.app/api/products/${id}`
-      );
-      console.log(res);
-      setProduct(res.data);
-    };
-    getProducts();
-  }, []);
+    const { productId } =useParams({})
+    const [product, setProduct] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
+
+
+    const apiURL = `https://js2-ecommerce-api.vercel.app/api/products/${productId}`
+    useEffect(() => {
+        const getProduct = async () => {
+            setLoading(true)
+            try {
+                const res = await axios.get(apiURL)
+                setProduct(res.data)
+                setLoading(false)
+                console.log(res);
+                
+            } catch (err) {
+                setError('something went wrong')
+                console.error(err.message);
+                
+            }
+        }
+        getProduct()
+    }, [])
+  
   return (
-    <div className="bg-gradient-to-t from-slate-900 to-slate-600  p-2 mt-20">
-      <div className="flex flex-col mx-16 lg:flex-row">
-        <ProductDetailImages key={product} product={product} />
-        <ProductDetailInfo key={product} product={product} />
+    <div className='p-2'>
+        <div className="flex flex-col mx-16 lg:flex-row">
+        <DetailPageImages key={product} product={product} />
+        <DetailPageInfo key={product} product={product} />
       </div>
-      <hr className="mt-8"/>
-      <ExtraInfo key={product} product={product} />
+      
     </div>
-  );
+  )
 }
 
-export default DetailPage;
+export default DetailPage
