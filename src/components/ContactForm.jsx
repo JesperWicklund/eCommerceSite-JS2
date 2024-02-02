@@ -65,6 +65,7 @@ export const ContactForm = () => {
           });
 
           console.log("Form submitted successfully");
+          
         } else {
           console.error("Form submission failed");
         }
@@ -72,6 +73,7 @@ export const ContactForm = () => {
         console.error("Error submitting form:", error);
       }
     }
+
   };
   return (
     <>

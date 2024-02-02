@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage'
 import DetailPage from './pages/DetailPage'
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
