@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { ContactModal } from "./ContactModal";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,12 @@ export const ContactForm = () => {
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: "" });
   };
+
+
+  const [modalOpen, setModalOpen] = useState(false)
+  const handleCloseModal = () => {
+    setModalOpen(false)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,16 +69,22 @@ export const ContactForm = () => {
             name: "",
             email: "",
             message: "",
+            
           });
 
           console.log("Form submitted successfully");
+          setModalOpen(true)
           
         } else {
           console.error("Form submission failed");
         }
+
+
       } catch (error) {
         console.error("Error submitting form:", error);
       }
+
+      
     }
 
   };
@@ -141,6 +154,7 @@ export const ContactForm = () => {
           Skicka
         </button>
       </form>
+      <ContactModal isOpen={modalOpen} onClose={handleCloseModal} />
     </>
   );
 };

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { HiChevronLeft } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
+import { ShoppingCartContent } from "./ShoppingCartContent";
+import { useSelector } from "react-redux";
 const ShopingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { totalQuantity } = useSelector(state => state.shoppingCart)
   return (
     <>
-      <div>
-        <button onClick={() => setIsOpen(true)}>
-          
+      <div className="relative p-1 ">
+         { totalQuantity > 0 &&<div className="absolute bg-white w-4 h-4 flex items-center -right-3 top-0 justify-center rounded-full text-sm font-semibold text-black">
+          <p>{totalQuantity}</p>
+        </div>}
+        <button  onClick={() => setIsOpen(true)}>
           <BsBagFill />
         </button>
       </div>
@@ -25,8 +30,9 @@ const ShopingCart = () => {
                     Fortsätt Handla
                   </span>
                 </div>
-                <div className="px-6 font-bold">Varukorg (0)</div>
+                <div className="px-6 font-bold">Varukorg ({totalQuantity})</div>
               </div>
+              <ShoppingCartContent />
             </div>
           </div>
         </div>
