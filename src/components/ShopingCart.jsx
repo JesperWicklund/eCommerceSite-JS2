@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { HiChevronLeft } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
-import { ShoppingCartContent } from "./ShoppingCartContent";
+
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { CartItem } from "./CartItem";
 const ShopingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { totalQuantity } = useSelector(state => state.shoppingCart)
+  const { cart, totalPrice } = useSelector((state) => state.shoppingCart);
+  const { totalQuantity } = useSelector((state) => state.shoppingCart);
   return (
     <>
       <div className="relative p-1 ">
-         { totalQuantity > 0 &&<div className="absolute bg-white w-4 h-4 flex items-center -right-3 top-0 justify-center rounded-full text-sm font-semibold text-black">
-          <p>{totalQuantity}</p>
-        </div>}
-        <button  onClick={() => setIsOpen(true)}>
+        {totalQuantity > 0 && (
+          <div className="absolute bg-white w-4 h-4 flex items-center -right-3 top-0 justify-center rounded-full text-sm font-semibold text-black">
+            <p>{totalQuantity}</p>
+          </div>
+        )}
+        <button onClick={() => setIsOpen(true)}>
           <BsBagFill />
         </button>
       </div>
@@ -32,7 +37,32 @@ const ShopingCart = () => {
                 </div>
                 <div className="px-6 font-bold">Varukorg ({totalQuantity})</div>
               </div>
-              <ShoppingCartContent />
+              <div>
+                <div className="">
+                  {cart.length < 1 && (
+                    <div>
+                      <p className="text-center p-4">Din varukorg är tom</p>
+                    </div>
+                  )}
+                  {cart.map((item) => (
+                    <CartItem item={item} />
+                  ))}
+                </div>
+                <div className="mt-4 flex justify-between items-center px-4">
+                  <div>
+                    <p className="text-xl font-semibold">Total: {totalPrice}</p>
+                  </div>
+                  <div>
+                    <Link
+                      to="/checkout"
+                      onClick={() => setIsOpen(false)}
+                      className="border rounded-md p-2 bg-black opacity-70 text-white border-gray-700"
+                    >
+                      Checkout
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
