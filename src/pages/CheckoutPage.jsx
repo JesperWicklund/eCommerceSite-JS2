@@ -1,13 +1,14 @@
 import React from "react";
 import { CartItem } from "../components/CartItem";
 import { useSelector } from "react-redux";
+import { UserCheckout } from "../components/UserCheckout";
 
 
 function CheckoutPage() {
   const { cart, totalPrice } = useSelector((state) => state.shoppingCart);
   return (
-    <div className="flex flex-col  items-center lg:flex-row lg:gap-4">
-      <div className="w-1/2 bg-slate-400 rounded p-4">
+    <div className="flex flex-col p-4  items-center lg:flex-row lg:gap-4">
+      <div className="min-w-1/2 bg-slate-400 rounded p-4">
         <div className="">
           {cart.length < 1 && (
             <div>
@@ -25,8 +26,10 @@ function CheckoutPage() {
           
         </div>
       </div>
-      <div>
-            <div>hello</div>
+      <div className="w-1/2 ">
+            <div className="w-full">
+              <UserCheckout />
+            </div>
       </div>
     </div>
   );
