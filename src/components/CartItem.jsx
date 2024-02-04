@@ -3,21 +3,28 @@ import { RxCross1 } from "react-icons/rx";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { removeOne, addToCart, removeItem } from '../store/features/shoppingCart/ShoppingCartSlice';
+import { useCart } from '../context/cartContext';
 
 
 export const CartItem = ({item}) => {
 
-    const dispatch = useDispatch()
+    /* const dispatch = useDispatch() */
+
+    const   { addToCart, removeOne, removeItem } = useCart()
+
     const delOneFromCart = () => {
-        dispatch(removeOne(item.product._id))
+        /* dispatch(removeOne(item.product._id)) */
+        removeOne(item.product._id)
     }
 
     const addOneToCart = () => {
-        dispatch(addToCart(item.product))
+        /* dispatch(addToCart(item.product)) */
+        addToCart(item.product)
     }
 
     const delProduct = () => {
-        dispatch(removeItem(item.product._id))
+        /* dispatch(removeItem(item.product._id)) */
+        removeItem(item.product._id)
     }
   return (
     <div className='border-b flex justify-between items-center text-black p-2'>

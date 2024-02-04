@@ -2,14 +2,17 @@ import React from "react";
 import { DetailExtraInfo } from "./DetailExtraInfo";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/features/shoppingCart/ShoppingCartSlice";
+import { useCart } from "../context/cartContext";
 
 export const DetailPageInfo = ({product}) => {
 
-  const dispatch = useDispatch()
+  /* const dispatch = useDispatch() */
 
+  const   { addToCart } = useCart()
 
   const handleClick = () => {
-    dispatch(addToCart(product))
+    /* dispatch(addToCart(product)) */
+    addToCart(product)
   }
   return (
     <div className="p-4  text-white">

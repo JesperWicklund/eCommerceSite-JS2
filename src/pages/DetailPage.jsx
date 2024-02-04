@@ -34,9 +34,9 @@ function DetailPage() {
 
   return (
     <div className="lg:container">
-      <div className="flex flex-col mx-16">
-        <DetailPageImages key={product} product={product} />
-        <DetailPageInfo key={product} product={product} />
+      <div key={product} className="flex flex-col mx-16">
+        <DetailPageImages  product={product} />
+        <DetailPageInfo  product={product} />
       </div>
     </div>
   );

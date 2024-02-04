@@ -71,7 +71,7 @@ export const ContactForm = () => {
             message: "",
             
           });
-
+          console.log(response);
           console.log("Form submitted successfully");
           setModalOpen(true)
           

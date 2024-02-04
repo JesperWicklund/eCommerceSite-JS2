@@ -5,10 +5,16 @@ import { BsBagFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CartItem } from "./CartItem";
+import { useCart } from "../context/cartContext";
 const ShopingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { cart, totalPrice } = useSelector((state) => state.shoppingCart);
-  const { totalQuantity } = useSelector((state) => state.shoppingCart);
+/*   const { cart, totalPrice, totalQuantity } = useSelector((state) => state.shoppingCart);
+ */  
+
+  const { cart, totalPrice, totalQuantity } = useCart()
+
+
+
   return (
     <>
       <div className="relative p-1 ">
@@ -45,7 +51,7 @@ const ShopingCart = () => {
                     </div>
                   )}
                   {cart.map((item) => (
-                    <CartItem item={item} />
+                    <CartItem key={`cart_${item.product._id}`} item={item} />
                   ))}
                 </div>
                 <div className="mt-4 flex justify-between items-center px-4">
