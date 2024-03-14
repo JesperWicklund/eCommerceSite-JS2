@@ -1,11 +1,5 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
 # E-Commerce Project with React
@@ -22,3 +16,6 @@ React Router: Used for client-side routing, enabling smooth navigation between d
 Tailwind CSS: A utility-first CSS framework that simplifies the styling process and facilitates responsive design.
 
 Redux: State management library that helps in maintaining a centralized store for the application's state.
+
+# Disclaimer 
+This repository includes information and data obtained from Komplett for educational and informational purposes only. The owner of this repository acknowledges that the information and data from Komplett are subject to their respective terms of use and copyright protections.
